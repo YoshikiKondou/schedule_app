@@ -1,0 +1,67 @@
+<div class="main-container">
+  <div class="infomation">
+    <h2>スケジュール一覧</h2>　
+    <%= render 'layouts/shared/error', obj: @post %>
+    <% if flash[:failure] %>
+      <p class="failure"><%= flash[:failure] %></p>
+    <% end %>
+  </div>
+  <%= form_tag(posts_path, {method: :post}) do %>
+    <table>
+      <tbody>
+        <tr>
+          <th>
+            <label for="post_title">タイトル</label>
+          </th>
+          <td>
+            <input type="text" name="post[title]" value="<%= @post.title %>">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="post_start_at">開始日</label>
+          </th>
+          <td>
+            <input type="date" name="post[start_at]" value="<%= @post.start_at.strftime("%Y年%m月%d日") %>">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="post_end_at">終了日</label>
+          </th>
+          <td>
+            <input type="date" name="post[end_at]" value="<%= @post.end_at.strftime("%Y年%m月%d日") %>">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="post_is_all_day">終日</label>
+          </th>
+          <td>
+            <input name="post[is_all_day]" type="hidden" value="0">
+            <input type="checkbox" name="post[is_all_day]" id="post_is_all_day" value="<%= @post.is_all_day %>" checked="checked">
+            終日の場合はチェックを入れます
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="post_memo">スケジュールメモ</label>
+          </th>
+          <td>
+            <textarea class="posts-content" name="post[memo]"><%= @post.memo %></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <ul>
+        <li>
+          <input type="submit" name="commit" value="スケジュールを新規登録する" data-disable-with="スケジュールを新規登録する">
+        </li>
+        <li>
+          <%= link_to "スケジュール一覧に戻る", :posts %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
