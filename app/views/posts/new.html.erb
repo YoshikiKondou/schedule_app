@@ -22,7 +22,7 @@
             <label for="post_start_at">開始日</label>
           </th>
           <td>
-            <input type="date" name="post[start_at]" value="<%= @post.start_at.strftime("%Y年%m月%d日") %>">
+            <input type="date" name="post[start_at]" value="<%= @post.start_at %>">
           </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
             <label for="post_end_at">終了日</label>
           </th>
           <td>
-            <input type="date" name="post[end_at]" value="<%= @post.end_at.strftime("%Y年%m月%d日") %>">
+            <input type="date" name="post[end_at]" value="<%= @post.end_at %>">
           </td>
         </tr>
         <tr>
